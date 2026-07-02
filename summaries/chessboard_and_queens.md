@@ -1,212 +1,106 @@
-\# Chessboard and Queens
+# Chessboard and Queens
 
-
-
-\## Problem
-
-
+## Problem
 
 Given an 8 × 8 chessboard where some squares are reserved, determine the number of ways to place eight queens such that:
 
+- No queen attacks another queen.
+- No queen is placed on a reserved square.
 
+---
 
-\- No queen attacks another queen.
+## Problem Type
 
-\- No queen is placed on a reserved square.
+- Backtracking
+- Constraint Satisfaction
 
+---
 
-
-\---
-
-
-
-\## Problem Type
-
-
-
-\- Backtracking
-
-\- Constraint Satisfaction
-
-
-
-\---
-
-
-
-\## Core Idea
-
-
+## Core Idea
 
 Place one queen in each row using backtracking. For every row, try all valid columns that are not reserved and are not attacked by previously placed queens. Continue recursively until all eight queens have been placed, counting every valid configuration.
 
+---
 
-
-\---
-
-
-
-\## Algorithm Template
-
-
+## Algorithm Template
 
 ```text
-
 Read the chessboard
-
-
 
 Search(row)
 
+    If all rows have been processed
 
+        Count one valid solution
 
-&#x20;   If all rows have been processed
+        Return
 
+    For every column
 
+        If the square is reserved
 
-&#x20;       Count one valid solution
+            Continue
 
+        If the column or either diagonal is occupied
 
+            Continue
 
-&#x20;       Return
+        Place the queen
 
+        Search(next row)
 
-
-&#x20;   For every column
-
-
-
-&#x20;       If the square is reserved
-
-
-
-&#x20;           Continue
-
-
-
-&#x20;       If the column or either diagonal is occupied
-
-
-
-&#x20;           Continue
-
-
-
-&#x20;       Place the queen
-
-
-
-&#x20;       Search(next row)
-
-
-
-&#x20;       Remove the queen
-
+        Remove the queen
 ```
 
+---
 
-
-\---
-
-
-
-\## Key Idea
-
-
+## Key Idea
 
 Technique:
-
-\- Backtracking
-
-\- Constraint Satisfaction
-
-
+- Backtracking
+- Constraint Satisfaction
 
 Mathematical / Algorithmic Insight:
+- Exactly one queen is placed in each row.
+- A valid placement must satisfy three constraints:
+  - Unique column
+  - Unique main diagonal
+  - Unique secondary diagonal
+- Invalid partial configurations are discarded immediately, significantly reducing the search space.
 
-\- Exactly one queen is placed in each row.
+---
 
-\- A valid placement must satisfy three constraints:
+## Common Mistakes
 
-&#x20; - Unique column
+- Forgetting to check one of the two diagonals.
+- Allowing a queen to be placed on a reserved square.
+- Forgetting to remove a queen when backtracking.
+- Trying every square on the board instead of placing exactly one queen per row.
 
-&#x20; - Unique main diagonal
+---
 
-&#x20; - Unique secondary diagonal
+## Time Complexity
 
-\- Invalid partial configurations are discarded immediately, significantly reducing the search space.
+**O(8!)**
 
-
-
-\---
-
-
-
-\## Common Mistakes
-
-
-
-\- Forgetting to check one of the two diagonals.
-
-\- Allowing a queen to be placed on a reserved square.
-
-\- Forgetting to remove a queen when backtracking.
-
-\- Trying every square on the board instead of placing exactly one queen per row.
-
-
-
-\---
-
-
-
-\## Time Complexity
-
-
-
-\*\*O(8!)\*\*
-
-
-
-\*\*Justification:\*\*
-
-
+**Justification:**
 
 At most one queen can be placed in each row and each column. In the worst case, the search explores permutations of column placements, while pruning invalid configurations as soon as they violate a constraint.
 
+---
 
+## Memory Complexity
 
-\---
+**O(8)**
 
-
-
-\## Memory Complexity
-
-
-
-\*\*O(8)\*\*
-
-
-
-\*\*Justification:\*\*
-
-
+**Justification:**
 
 The recursion depth is at most `8`, and the auxiliary arrays for columns and diagonals have constant size.
 
+---
 
+## Reference Implementation
 
-\---
+See [`chessboard_and_queens.cpp`](../src/chessboard_and_queens.cpp).
 
-
-
-\## Reference Implementation
-
-
-
-See \[`chessboard\_and\_queens.cpp`](../chessboard\_and\_queens.cpp).
-
-
-
-\---
-
+---

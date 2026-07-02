@@ -1,188 +1,94 @@
-\# Repetitions
+# Repetitions
 
-
-
-\## Problem
-
-
+## Problem
 
 Given a DNA sequence, determine the length of the longest contiguous substring consisting of the same character.
 
+---
 
+## Problem Type
 
-\---
+- String Algorithms
+- Linear Traversal
 
+---
 
-
-\## Problem Type
-
-
-
-\- String Algorithms
-
-\- Linear Traversal
-
-
-
-\---
-
-
-
-\## Core Idea
-
-
+## Core Idea
 
 Traverse the DNA sequence once while maintaining the length of the current consecutive repetition. Whenever the current character differs from the previous one, start a new repetition. The maximum repetition length encountered during the traversal is the answer.
 
+---
 
-
-\---
-
-
-
-\## Algorithm Template
-
-
+## Algorithm Template
 
 ```text
-
 Read the DNA sequence
-
-
 
 Initialize
 
-
-
-&#x20;   currentLength = 1
-
-&#x20;   maximumLength = 1
-
-
+    currentLength = 1
+    maximumLength = 1
 
 For each character starting from the second one
 
+    If the current character is equal to the previous one
 
+        Increase currentLength
 
-&#x20;   If the current character is equal to the previous one
+    Else
 
+        Reset currentLength to 1
 
-
-&#x20;       Increase currentLength
-
-
-
-&#x20;   Else
-
-
-
-&#x20;       Reset currentLength to 1
-
-
-
-&#x20;   Update maximumLength
-
-
+    Update maximumLength
 
 Print maximumLength
-
 ```
 
+---
 
-
-\---
-
-
-
-\## Key Idea
-
-
+## Key Idea
 
 Technique:
-
-\- Linear Traversal
-
-\- Two-Pointer / Consecutive Segment Tracking
-
-
+- Linear Traversal
+- Two-Pointer / Consecutive Segment Tracking
 
 Mathematical / Algorithmic Insight:
+- Every maximal repetition forms a contiguous segment of identical characters.
+- Each segment is processed exactly once while scanning the string from left to right.
 
-\- Every maximal repetition forms a contiguous segment of identical characters.
+---
 
-\- Each segment is processed exactly once while scanning the string from left to right.
+## Common Mistakes
 
+- Forgetting to update the maximum length after extending the current segment.
+- Resetting the current repetition length incorrectly when the character changes.
+- Comparing every character with all previous characters instead of only the immediately preceding one.
+- Forgetting to handle the case where the entire string consists of the same character.
 
+---
 
-\---
+## Time Complexity
 
+**O(n)**
 
-
-\## Common Mistakes
-
-
-
-\- Forgetting to update the maximum length after extending the current segment.
-
-\- Resetting the current repetition length incorrectly when the character changes.
-
-\- Comparing every character with all previous characters instead of only the immediately preceding one.
-
-\- Forgetting to handle the case where the entire string consists of the same character.
-
-
-
-\---
-
-
-
-\## Time Complexity
-
-
-
-\*\*O(n)\*\*
-
-
-
-\*\*Justification:\*\*
-
-
+**Justification:**
 
 The sequence is traversed exactly once, and each character is processed in constant time.
 
+---
 
+## Memory Complexity
 
-\---
+**O(1)**
 
-
-
-\## Memory Complexity
-
-
-
-\*\*O(1)\*\*
-
-
-
-\*\*Justification:\*\*
-
-
+**Justification:**
 
 Only a constant number of variables is maintained independently of the input size.
 
+---
 
+## Reference Implementation
 
-\---
+See [`repetitions.cpp`](../src/repetitions.cpp).
 
-
-
-\## Reference Implementation
-
-
-
-See \[`repetitions.cpp`](../src/repetitions.cpp).
-
-
-
-\---
-
+---
