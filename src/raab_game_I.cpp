@@ -30,7 +30,6 @@ Constraints:
 1 <= n <= 100
 0 <= a, b <= n
 */
-
 int main() {
 
     int t;
