@@ -15,7 +15,6 @@ The only input line has an integer n.
 Output
 Print the number of trailing zeros in n!.
 */
-
 int main() {
 
     long long n;
